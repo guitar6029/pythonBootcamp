@@ -21,26 +21,36 @@ def caesar(text, shiftVal, direction):
   if direction == 'encode':
     encryptedMsg = ''
     for letter in text:
-      position = alphabet.index(letter)
-      shiftedPosition = position + shiftVal
-      if shiftedPosition > 26:
-        new_position = shiftedPosition % 26
-        new_positionValue = alphabet[new_position]
-        encryptedMsg += str(new_positionValue)
-      else:
-        encryptedMsg += alphabet[shiftedPosition]
+      if letter.isnumeric():
+        encryptedMsg += letter
+      if letter == ' ':
+        encryptedMsg += ' '
+      elif not letter.isnumeric():  
+        position = alphabet.index(letter)
+        shiftedPosition = position + shiftVal
+        if shiftedPosition > 26:
+          new_position = shiftedPosition % 26
+          new_positionValue = alphabet[new_position]
+          encryptedMsg += str(new_positionValue)
+        else:
+          encryptedMsg += alphabet[shiftedPosition]
     return encryptedMsg
   elif direction == 'decode':
     decryptedMsg = ''
     for letter in text:
-      position = alphabet.index(letter)
-      shiftedPosition = position - shiftVal
-      if shiftedPosition < 0:
-        new_position = shiftedPosition % 26
-        new_positionValue = alphabet[new_position]
-        decryptedMsg += str(new_positionValue)
-      else:
-        decryptedMsg += alphabet[shiftedPosition]
+      if letter.isnumeric():
+        decryptedMsg += letter
+      if letter == ' ':
+        decryptedMsg += ' '
+      elif not letter.isnumeric():
+        position = alphabet.index(letter)
+        shiftedPosition = position - shiftVal
+        if shiftedPosition < 0:
+          new_position = shiftedPosition % 26
+          new_positionValue = alphabet[new_position]
+          decryptedMsg += str(new_positionValue)
+        else:
+          decryptedMsg += alphabet[shiftedPosition]
     return decryptedMsg
   elif direction == 'q':
     userQuit = True
