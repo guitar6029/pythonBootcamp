@@ -1,5 +1,6 @@
 
 import art 
+import random
 guessed = False
 def getNumberOfTries(tries):
   if tries == 1:
@@ -8,7 +9,7 @@ def getNumberOfTries(tries):
     return 5
 
 print(art.logo)
-number = 15
+number = random.randint(1,100)
 count = 1
 difficulty = int(input('Enter the level of difficulty : 1 for easy, 2 for hard : '))
 numberOfTries = getNumberOfTries(difficulty)
